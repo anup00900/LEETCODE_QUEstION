@@ -1,0 +1,51 @@
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        
+        vector<vector<int>>v;
+       
+        if(nums.size()<3)
+        {
+            return(v);
+        }
+        sort(nums.begin(),nums.end());
+        unordered_map<int,int>umap;
+        int r;
+        
+        for(int i=0;i<nums.size();i++)
+        {
+            umap[nums[i]] = i;
+        }
+        
+        for(int i=0;i<nums.size();i++)
+        {
+            if(nums[i] >0)
+            {
+                break;
+            }
+            
+            for(int j=i+1;j<nums.size();j++)
+            {
+                r = (-1)*(nums[i]+nums[j]);
+                
+                if(umap.find(r) != umap.end() && umap.find(r)->second > j )
+                {
+                    v.push_back({nums[i],nums[j],r});
+                }
+            
+                
+                j = umap.find(nums[j])->second;
+                
+            }
+            i=umap.find(nums[i])->second;
+      
+        }
+        
+        
+        
+        return(v);
+       
+      
+     
+    }
+};
