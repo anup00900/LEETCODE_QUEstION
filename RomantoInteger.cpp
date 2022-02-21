@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int romanToInt(string s) {
+        unordered_map<char,int>umap;
+        
+        umap['I']=1;
+        umap['V']=5;
+        umap['X']=10;
+        umap['L']=50;
+        umap['C']=100;
+        umap['D']=500;
+        umap['M']=1000;
+        int ans=0;
+        for(int i=0;i<s.length()-1;i++)
+        {
+            if(umap[s[i]]>=umap[s[i+1]])
+            {
+                ans=ans+umap[s[i]];
+            }
+            else
+            {
+                ans=ans-umap[s[i]];
+            }
+        }
+        ans=ans+umap[s[s.length()-1]];
+        return ans;
+    }
+};
