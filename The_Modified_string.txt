@@ -1,0 +1,19 @@
+class Solution
+{
+    public:
+    //Function to find minimum number of characters which Ishaan must insert  
+    //such that string doesn't have three consecutive same characters.
+    int modified (string a)
+    {
+        int c=0;
+        for(int i=1;i<a.length();i++)
+        {
+            if(a[i-1]==a[i] and a[i]==a[i+1])
+            {
+                c++;
+                i++;
+            }
+        }
+        return c;
+    }
+};
